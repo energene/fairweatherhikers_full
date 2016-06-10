@@ -2,7 +2,7 @@
   "name": "fairweatherhikers_full_build",
   "version": "0.1.1",
   "description": "Choose your hiking trail based on weather conditions, with Angular",
-  "main": "index.js",
+  "main": "api_server/index.js",
   "directories": {
     "test": "test"
   },
@@ -13,7 +13,7 @@
     "create-db-dir": "node api_server/lib/make_directory.js",
     "install": "npm run create-db-dir",
     "test": "node_modules/mocha/bin/mocha test",
-    "start": "node index.js"
+    "start": "node api_server/index.js"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     },
     {
       "name": "Kris Skelton",
-      "email": ""
+      "email": "kristopher@kmskelton.com"
     }
   ],
   "license": "MIT",
