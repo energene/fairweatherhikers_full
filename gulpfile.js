@@ -72,6 +72,6 @@ gulp.task('mocha', () => {
     .pipe(mocha());
 });
 
-gulp.task('default', ['build', 'lint', 'mocha', 'test:karma']);
+gulp.task('default', ['build', 'mocha', 'test:karma']);
 gulp.task('build', ['webpack:dev', 'static:dev', 'sass:dev']);
 gulp.task('lint', ['lint:dev']);

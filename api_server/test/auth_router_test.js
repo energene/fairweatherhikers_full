@@ -24,7 +24,8 @@ describe('Auth router', () => {
     });
   });
 
-  it('should be able to create a user', (done) => {
+  it('should be able to create a user', function(done) {
+    this.timeout(3000);
     request('localhost:' + port)
       .post('/api/signup')
       .send({ email: 'auth@test.com', password: '12345678' })
@@ -41,13 +42,14 @@ describe('Auth router', () => {
     before((done) => {
       var userSignin = {
         email: 'newAuth@test.com',
-        password: bcrypt.hashSync('authentication', 8)
+        password: bcrypt.hashSync('authentication', 6)
       };
 
       User.create(userSignin, done);
     });
 
-    it('should be able to sign in', (done) => {
+    it('should be able to sign in', function(done) {
+      this.timeout(3000);
       request('localhost:' + port)
         .get('/api/signin')
         .auth('newAuth@test.com', 'authentication')
@@ -59,7 +61,8 @@ describe('Auth router', () => {
         });
     });
 
-    it('should be refuse access with incorrect password', (done) => {
+    it('should refuse access with incorrect password', function(done) {
+      this.timeout(3000);
       request('localhost:' + port)
         .get('/api/signin')
         .auth('newAuth@test.com', 'wrongpassword')
@@ -71,7 +74,8 @@ describe('Auth router', () => {
         });
     });
 
-    it('should be refuse access with invalid username', (done) => {
+    it('should refuse access with invalid username', function(done) {
+      this.timeout(3000);
       request('localhost:' + port)
         .get('/api/signin')
         .auth('wrongemail@test.com', 'authentication')
