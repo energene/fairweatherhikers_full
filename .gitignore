@@ -1,13 +1,8 @@
 db/**
 **/db/**
-**/build
 node_modules
 node_modules/**
 **/node_modules
-**/**/bundle.js
-**/**/bundle.js.map
-**/**/pro_bundle.js
-**/**/pro_bundle.js.map
 api_server/db/**/*
 
 # Compiled source #
