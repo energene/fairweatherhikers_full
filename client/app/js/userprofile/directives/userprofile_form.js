@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.directive('userprofileForm', function() {
+  app.directive('userprofileForm', () => {
     return {
       restrict: 'EAC',
       require: '^ngController',

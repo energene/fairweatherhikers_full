@@ -28,7 +28,6 @@ module.exports = exports = function(data, res, cb) {
       for (var i = 0; i < 3; i++) {
         var dateString = new Date(parsed['daily']['data'][i]['time'] * 1000); // eslint-disable-line
         dateString = new Date(dateString).toUTCString();
-        var date = dateString.split(' ').slice(0, 4).join(' ');
 
         var rainChanceString = parsed['daily']['data'][i]['precipProbability'] * 100; // eslint-disable-line
         var rainChance = Math.round(rainChanceString);

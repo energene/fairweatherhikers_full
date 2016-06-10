@@ -16,7 +16,7 @@ module.exports = function(app) {
         return token;
       },
       getToken: function() {
-        this.token || this.saveToken(window.localStorage.token);
+        this.token = this.token || this.saveToken(window.localStorage.token);
         return this.token;
       },
       getEmail: function() {
@@ -24,13 +24,13 @@ module.exports = function(app) {
           if (this.email) return resolve(this.email);
           if (!this.getToken()) return reject(new Error('No valid token.'));
 
-          $http.get(baseUrl + '/api/userprofile') 
+          $http.get(baseUrl + '/api/userprofile')
             .then((res) => {
               this.email = res.data.email;
               resolve(res.data.email);
             }, reject);
         }.bind(this));
       }
-    }
+    };
   }]);
 };

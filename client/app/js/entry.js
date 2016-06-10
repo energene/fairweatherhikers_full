@@ -9,7 +9,6 @@ require('./services')(demoApp);
 require('./trails')(demoApp);
 require('./userprofile')(demoApp);
 require('./auth')(demoApp);
-require('./forecast')(demoApp);
 require('./map')(demoApp);
 
 demoApp.config(['$routeProvider', function($rp) {
@@ -25,7 +24,6 @@ demoApp.config(['$routeProvider', function($rp) {
       controllerAs: 'forecastctrl'
     })
     .when('/map', {
-      //templateUrl: 'templates/maps/views/map_view.html',
       controller: 'MapController',
       controllerAs: 'mapctrl'
     })

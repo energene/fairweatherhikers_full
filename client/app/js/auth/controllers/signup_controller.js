@@ -1,6 +1,6 @@
 var baseUrl = require('../../config').baseUrl;
 module.exports = function(app) {
-  app.controller('SignUpController', ['$http', '$location',  'handleError', 'fwhAuth', function($http, $location, handleError, auth) {
+  app.controller('SignUpController', ['$http', '$location', 'handleError', 'fwhAuth', function($http, $location, handleError, auth) {
     this.signup = true;
     this.errors = [];
     this.buttonText = 'Submit';

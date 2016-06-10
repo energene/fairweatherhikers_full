@@ -11,12 +11,13 @@ forecastRouter.get('/forecast', bodyParser, (req, res) => {
   Forecast.find(req.query, (err, data) => {
     if (err) return errorHandler(err, res);
     if (data.length === 0) {
-      forecastData(req.query.lat, req.query.lon)
+      forecastData(req.query.lat, req.query.lon);
       Forecast.find(req.query, (err, data) => {
+        if (err) return errorHandler(err);
         res.status(200).json(data);
-      })
+      });
     } else {
-    res.status(200).json(data);
+      res.status(200).json(data);
     }
   });
 });
@@ -24,9 +25,9 @@ forecastRouter.get('/forecast', bodyParser, (req, res) => {
 forecastRouter.post('/forecast', bodyParser, (req, res) => {
   var newForecast = new Forecast(req.body);
   newForecast.validate((err) => {
-    console.log("validate error is: ", err);
+    console.log('validate error is: ', err);
     if (err) {
-      console.log("calling error handler");
+      console.log('calling error handler');
       return errorHandler(err);
     }
   });

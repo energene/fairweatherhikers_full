@@ -1,18 +1,15 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const maps = require('gulp-sourcemaps');
-// const protractor = require('gulp-protractor').protractor;
-// const cp = require('child_process');
+const Server = require('karma').Server;
+
 const webpack = require('webpack-stream');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
-// const mongoose = require('mongoose');
-// const mongoUri = 'mongodb://localhost/bands_test';
 
 var lintFiles = ['**/*.js', '!node_modules/**', '!**/build/**', '!**/*spec.js',
 '!**/*test.js', '!test/**bundle.**', '!*.conf.js'];
 var statFiles = ['./client/app/**/*.html', './client/app/images/**.*'];
-var children = [];
 
 gulp.task('webpack:dev', () => {
   gulp.src('client/app/js/entry.js')
@@ -63,11 +60,18 @@ gulp.task('webpack:test', () => {
     .pipe(gulp.dest('test/'));
 });
 
+gulp.task('test:karma', ['webpack:test'], (done) => {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
 gulp.task('mocha', () => {
   return gulp.src('api_server/test/**/*test.js')
     .pipe(mocha());
 });
 
-gulp.task('default', ['build', 'lint', 'mocha']);
+gulp.task('default', ['build', 'lint', 'mocha', 'test:karma']);
 gulp.task('build', ['webpack:dev', 'static:dev', 'sass:dev']);
 gulp.task('lint', ['lint:dev']);

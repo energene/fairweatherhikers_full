@@ -8,7 +8,7 @@ var forecastSchema = new mongoose.Schema({
   icon: { type: String },
   precipProbability: { type: Number },
   temperatureMin: { type: Number },
-  temperatureMax: { type: Number },
+  temperatureMax: { type: Number }
 });
 
 module.exports = mongoose.model('Forecast', forecastSchema);

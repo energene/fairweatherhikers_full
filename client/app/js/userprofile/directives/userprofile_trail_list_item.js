@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.directive('userprofileListItem', function() {
+  app.directive('userprofileListItem', () => {
     return {
       restrict: 'EAC',
       replace: true,

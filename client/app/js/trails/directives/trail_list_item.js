@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.directive('trailListItem', function() {
+  app.directive('trailListItem', () => {
     return {
       restrict: 'EAC',
       replace: true,
@@ -12,7 +12,7 @@ module.exports = function(app) {
       link: function(scope, element, attrs, controller) {
         scope.remove = controller.removeTrail;
 
-        }
       }
+    };
   });
 };

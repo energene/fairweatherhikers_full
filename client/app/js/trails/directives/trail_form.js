@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.directive('trailForm', function() {
+  app.directive('trailForm', () => {
     return {
       restrict: 'EAC',
       require: '^ngController',

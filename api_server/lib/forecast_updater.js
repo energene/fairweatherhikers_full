@@ -1,13 +1,10 @@
 var https = require('https');
 var http = require('http');
-// var lat = 47.6205;
-// var lon = 122.3493;
 var API_KEY = 'fdbc915b0ead7e316556b1de658613ef';
-var fs = require('fs');
 
 module.exports = exports = function(lat, lon) {
 
-  var url = 'https://api.forecast.io/forecast/' + API_KEY + '/' + lat + ',' + lon
+  var url = 'https://api.forecast.io/forecast/' + API_KEY + '/' + lat + ',' + lon;
 
   var request = https.get(url, (response) => {
     response.setEncoding('utf-8');
@@ -21,10 +18,10 @@ module.exports = exports = function(lat, lon) {
     });
     response.on('end', (err) => {
       try {
-      forecast = JSON.parse(buffer);
+        forecast = JSON.parse(buffer);
       }
-      catch(fish) {
-        return console.log(fish);
+      catch (err) {
+        return console.log(err);
       }
 
       // Let's add some data to the db
@@ -49,11 +46,11 @@ module.exports = exports = function(lat, lon) {
           headers: {
             'Content-Type': 'application/json'
           }
-        }
-        var postData = http.request(postOptions, (res) => {});
-          var preppedData = JSON.stringify(schemeifiedData);
-          postData.write(preppedData);
-          postData.end();
+        };
+        var postData = http.request(postOptions, () => {});
+        var preppedData = JSON.stringify(schemeifiedData);
+        postData.write(preppedData);
+        postData.end();
       }
     });
   });

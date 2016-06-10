@@ -24,8 +24,8 @@ module.exports = exports = {
   }
 },
   listen: function(port, mongoString, cb) {
-    var dbtest = mongoose.connect(mongoString);
-    
+    mongoose.connect(mongoString);
+
     return this.server = app.listen(port, cb);
   },
   close: function(cb) {
