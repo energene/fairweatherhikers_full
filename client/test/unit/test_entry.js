@@ -8,3 +8,4 @@ require('./signinController_test');
 require('./signupController_test');
 require('./trails_test');
 require('./mapController_test');
+require('./userController_test');

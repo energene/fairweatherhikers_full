@@ -68,8 +68,8 @@ module.exports = function(app) {
                 longitude: markere.model.longitude
               };
               $scope.windowoptions = {
-                             pixelOffset: new google.maps.Size(-1, -25, 'px', 'px')
-                           };
+               pixelOffset: new google.maps.Size(-1, -25, 'px', 'px')
+             };
               $scope.windowshow = true;
            }
          }
